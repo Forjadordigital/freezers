@@ -127,11 +127,13 @@ if (!dato) {
 
         <section class="w-full bg-blue-950 pb-4 flex flex-col justify-center">
             <h3 class="text-3xl text-white font-golda w-full mx-4 mt-4 mb-2">
-                AR Viewer
+              AR Viewer
             </h3>
             <p class="text-neutral-300 mx-4">View the {dato.modelo} cooler model in real life</p>
             <ARViewer ar={dato.AR[0]} />
-        </section>
-
+            {
+              dato.AR.length > 1 ? <ARViewer class="mt-4" ar={dato.AR[1]} /> : ''
+            }
+          </section>
    </main>
 </Layout>

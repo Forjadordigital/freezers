@@ -80,7 +80,7 @@ export const coolers: Cooler[] = [
         "Low maintenance capacitor",
         "Eco-friendly polyurethane insulation"
       ],
-      'AR': ['nevera-clh-27-gatorade', 'nevera-clh-27-pepsi'],
+      'AR': ['nevera-clh-27-pepsi','nevera-clh-27-gatorade'],
       'imagen':'criotec'
     },
     {
@@ -148,7 +148,7 @@ export const coolers: Cooler[] = [
         "Low maintenance capacitor",
         "Eco-friendly polyurethane insulation"
       ],
-      'AR': ['nevera-ct4-gatorlit','nevera-ct4-pepsi']
+      'AR': ['nevera-ct4-pepsi','nevera-ct4-gatorlit']
       ,'imagen':'criotec'
     },
     {
