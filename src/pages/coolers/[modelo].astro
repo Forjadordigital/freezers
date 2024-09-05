@@ -30,8 +30,9 @@ if (!dato) {
 ---
 
 <Layout title={`Cooler ${dato.modelo}`}>
-   <main class=" mx-4 grid grid-cols-1 grid-flow-dense gap-5 sm:grid-cols-3 sm:gap-10">
+   <main class="mx-4 grid grid-cols-1 grid-flow-dense gap-5 sm:grid-cols-3 sm:gap-10">
         <article class="bg-sky-700 shadow-lg shadow-sky-600/50 rounded-lg p-4 h-min">
+            <img src=`/images/${dato.imagen}.png`.imagen alt="">
             <h2 class="text-3xl text-white font-golda">
                 Model {
                     dato.modelo
@@ -66,8 +67,8 @@ if (!dato) {
                 </li>
             </ul>
 
-            <ul class="mb-4 text-right">
-                <li class="flex justify-end items-center gap-3 mb-2">
+            <ul class="my-8 text-left">
+                <li class="flex items-center gap-3 mb-2">
                     <img src="/images/capacidad.png" alt="Icono de una regla" class="w-8">
                     <h2 class="text-3xl text-white font-golda">
                         Capacity

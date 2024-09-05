@@ -10,6 +10,7 @@ interface Cooler {
     consumption: string[];
     standarSpecs: string[];
     AR: string[];
+    imagen: string;
 }
 
 
@@ -45,7 +46,8 @@ export const coolers: Cooler[] = [
         "Low maintenance capacitor",
         "Eco-friendly polyurethane insulation"
       ],
-      'AR':['nevera-clh-60-pepsi']
+      'AR':['nevera-clh-60-pepsi'],
+      'imagen':'criotec'
     },
     {
       "id": 2,
@@ -78,7 +80,8 @@ export const coolers: Cooler[] = [
         "Low maintenance capacitor",
         "Eco-friendly polyurethane insulation"
       ],
-      'AR': ['nevera-clh-27-gatorade', 'nevera-clh-27-pepsi']
+      'AR': ['nevera-clh-27-gatorade', 'nevera-clh-27-pepsi'],
+      'imagen':'criotec'
     },
     {
       "id": 3,
@@ -111,7 +114,8 @@ export const coolers: Cooler[] = [
         "Low maintenance capacitor",
         "Eco-friendly polyurethane insulation"
       ],
-      'AR': ['nevera-clh-18']
+      'AR': ['nevera-clh-18'],
+      'imagen':'criotec'
     },
     {
       "id": 4,
@@ -145,6 +149,7 @@ export const coolers: Cooler[] = [
         "Eco-friendly polyurethane insulation"
       ],
       'AR': ['nevera-ct4-gatorlit','nevera-ct4-pepsi']
+      ,'imagen':'criotec'
     },
     {
       "id": 5,
@@ -176,7 +181,8 @@ export const coolers: Cooler[] = [
         "Low maintenance capacitor",
         "Electronic smart control with energy saving system"
       ],
-      'AR': ['nevera-x28']
+      'AR': ['nevera-x28'],
+      'imagen':'fogel'
     },
     {
       "id": 6,
@@ -210,7 +216,8 @@ export const coolers: Cooler[] = [
         "Electronic smart control with energy saving system",
         "Rear solid door"
       ],
-      'AR': ['nevera-clh-18']
+      'AR': ['nevera-v280'],
+      'imagen':'fogel'
     },
     {
       "id": 7,
@@ -243,6 +250,7 @@ export const coolers: Cooler[] = [
         "LED interior illumination",
         "Door handle with LCD screen to display branded messages"
       ],
-        'AR': ['nevera-pm-gtr']
+        'AR': ['nevera-pm-gtr'],
+        'imagen':'fogel'
     }
   ]
