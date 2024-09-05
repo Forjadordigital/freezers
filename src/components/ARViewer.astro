@@ -1,25 +1,44 @@
 ---
+const { ar } = Astro.props;
 ---
 
-<div class="h-full w-full">
-    <model-viewer class="h-full" id="model-viewer" src="/modelos/nevera-pm-gtr.glb" ar ios-src="/modelos/nevera-pm-gtr.usdz" ar-modes="scene-viewer webxr"
+<div class="w-full flex flex-col justify-center items-center">
+    <model-viewer class="w-full h-full min-h-[500px] bg-blue-950 rounded-lg" id="model-viewer" 
+        src=`/modelos/${ar}.glb`
+        ar 
+        ios-src=`/modelos/${ar}.usdz`
+        ar-modes="scene-viewer webxr"
         camera-controls touch-action="pan-y" alt="Nevera-clh-18" ar-scale="1" meshopt-compression="true">
         <div id="error" class="hide">AR is not supported on this device</div>
         <!-- contenido de texto -->
         
     </model-viewer>
-    <div class="cajatexto">
-        <h2 class="font-semibold">
+    <div class="text-start">
+        <!-- <h2 class="font-semibold">
             Nevera X28
-        </h2>
-        <p>Presione el botón ubicado a la derecha</p>
-        <p>Para ver el modelo en AR (Realidad Aumentada) use el Smartphone</p>
+        </h2> -->
+        <p class="text-neutral-100 font-medium">Presione el botón ubicado a la derecha</p>
     </div>
 </div>
 
 
 <style>
+    #error {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 16px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            transition: opacity 0.3s;
+        }
 
+        #error.hide {
+            opacity: 0;
+            visibility: hidden;
+            transition: visibility 2s, opacity 1s 1s;
+        }
 </style>
 
 <script is:inline type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>

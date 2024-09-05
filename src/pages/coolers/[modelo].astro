@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { coolers } from '../../data/data-neveras'; // Tu archivo con los datos de los coolers
+import ARViewer from '../../components/ARViewer.astro';
+import { displayPartsToString } from 'typescript';
+
+// Habilitar el prerender de las rutas generadas
+export const prerender = true;
+
+// Este método genera rutas dinámicas basadas en los coolers
+export function getStaticPaths() {
+    const paths = coolers.map((cooler) => ({
+        params: {
+            modelo: cooler.modelo, // Genera rutas como /coolers/CLH-60
+        }
+    }));
+
+    console.log(paths); // Para verificar las rutas generadas en la consola
+    return paths;
+}
+
+
+const { modelo } = Astro.params; // Obtener el modelo desde la URL
+const dato = coolers.find((cooler) => cooler.modelo === modelo); // Buscar en el array de coolers
+
+// Validación por si el modelo no existe
+if (!dato) {
+    throw new Error(`Modelo no encontrado: ${modelo}`);
+}
+---
+
+<Layout title={`Cooler ${dato.modelo}`}>
+   <main class=" mx-4 grid grid-cols-1 grid-flow-dense gap-5 sm:grid-cols-3 sm:gap-10">
+        <article class="bg-sky-700 shadow-lg shadow-sky-600/50 rounded-lg p-4 h-min">
+            <h2 class="text-3xl text-white font-golda">
+                Model {
+                    dato.modelo
+                }
+            </h2>
+            <span class="text-white font-light">
+                {dato.temperatura}
+            </span>
+            <h3 class="text-2xl text-white font-golda mt-4">
+                Equipment Details
+           </h3>
+            <p class="text-neutral-300 text-lg mt-1">
+                {dato.details}
+            </p>
+        </article>
+        <article class="bg-sky-700 shadow-lg shadow-sky-600/50 rounded-lg p-4 h-min text-neutral-300 text-lg">
+            <ul class="mb-4">
+                <li class="flex items-center gap-3 mb-2">
+                    <img src="/public/images/regla.svg" alt="Icono de una regla" class="w-10 h-10">
+                    <h2 class="text-3xl text-white font-golda">
+                        Measurements
+                    </h2>
+                </li>
+                <li>
+                    Length: {dato.length}
+                </li>
+                <li>
+                    Width: {dato.width}
+                </li>
+                <li>
+                    Hight: {dato.hight}
+                </li>
+            </ul>
+
+            <ul class="mb-4 text-right">
+                <li class="flex justify-end items-center gap-3 mb-2">
+                    <img src="/public/images/capacidad.png" alt="Icono de una regla" class="w-8">
+                    <h2 class="text-3xl text-white font-golda">
+                        Capacity
+                    </h2>
+                </li>
+                {
+                    dato.capacity.map((datoCap, index) => {
+					return (
+                        <li key?="index" >
+                            {datoCap}
+                        </li>
+                    )
+				  })
+                }
+            </ul>
+
+            <ul class="mb-4 text-left">
+                <li class="flex justify-start items-center gap-3 mb-2">
+                    <img src="/public/images/consumo.svg" alt="Icono de una regla" class="w-12">
+                    <h2 class="text-3xl text-white font-golda">
+                        Consumption
+                    </h2>
+                </li>
+                {
+                    dato.consumption.map((datoConsumo, index) => {
+					return (
+                        <li key?="index" >
+                            {datoConsumo}
+                        </li>
+                    )
+				  }) 
+                }
+            </ul>
+        </article>
+        <article class="bg-sky-700 shadow-lg shadow-sky-600/50 rounded-lg p-4 h-min">
+            <h3 class="text-3xl text-white font-golda mb-4">
+                STANDARD SPECs
+            </h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {
+                    dato.standarSpecs.map((datoSpec, index) => {
+					return (
+                        <li class=" flex items-center gap-2 text-lg text-neutral-300 mb-2">
+                            <span class="border border-spacing-2 rounded-full py-2.5 px-5 text-neutral-200 font-bold text-lg">
+                                {index+1}
+                            </span>
+                            <p>
+                                {datoSpec}
+                            </p>
+                        </li>
+                    )
+				  }) 
+                }
+            </ul>
+        </article>
+
+        <section class="w-full bg-blue-950 pb-4 flex flex-col justify-center">
+            <h3 class="text-3xl text-white font-golda w-full mx-4 mt-4 mb-2">
+                AR Viewer
+            </h3>
+            <p class="text-neutral-300 mx-4">View the {dato.modelo} cooler model in real life</p>
+            <ARViewer ar={dato.AR[0]} />
+        </section>
+
+   </main>
+</Layout>
