@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
 import Card from "../components/Card.astro";
 import { coolers } from '../data/data-neveras.ts'
 
@@ -30,7 +29,7 @@ const datos = coolers
 			<div class="w-full grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-5">
 				{
 				  datos.map((dato) => {
-					return <Card href="#" title={dato.modelo} description={dato.details} />;
+					return <Card href={dato.modelo} title={dato.modelo} description={dato.details} />;
 				  })
 				}
 			  </div>
