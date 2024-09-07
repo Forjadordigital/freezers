@@ -36,7 +36,7 @@ if (!dato) {
             <h3 class="pt-10  font-pepsi-extended text-center text-2xl text-white font-golda w-full">
             AR Viewer
             </h3>
-            <p class="text-center text-white">View the CLH-60 cooler</p>
+            <p class="text-center text-white">View the {dato.modelo} cooler</p>
             <p class="text-center text-white">model in real life</p>
             {
             dato.AR.length > 1 ? <TabViewer arUno={dato.AR[0]} arDos={dato.AR[1]} tabDos={dato.AR[3]} /> : <ARViewer ar={dato.AR[0]} />
