@@ -1,44 +1,47 @@
 ---
 const { ar } = Astro.props;
+
+console.log(ar)
+
 ---
 
 <div class="w-full flex flex-col justify-center items-center">
-    <model-viewer class="w-full h-full min-h-[500px] bg-[#141140] rounded-lg" id="model-viewer" 
-        src=`/modelos/${ar}.glb`
-        ar 
-        ios-src=`/modelos/${ar}.usdz`
-        ar-modes="scene-viewer webxr"
-        camera-controls touch-action="pan-y" alt="Nevera-clh-18" ar-scale="1" meshopt-compression="true">
-        <div id="error" class="hide">AR is not supported on this device</div>
-        <!-- contenido de texto -->
-        
-    </model-viewer>
+    {ar === "nevera-mango" ? (
+        <img src="/modelos/nevera-mango.webp" alt="Nevera Mango" class="w-1/2" />
+    ) : (
+        <model-viewer class="w-full h-full min-h-[500px] bg-[#141140] rounded-lg" id="model-viewer" 
+            src={`/modelos/${ar}.glb`}
+            ar 
+            ios-src={`/modelos/${ar}.usdz`}
+            ar-modes="scene-viewer webxr"
+            camera-controls touch-action="pan-y" alt={`Modelo ${ar}`} ar-scale="1" meshopt-compression="true">
+            <div id="error" class="hide">AR is not supported on this device</div>
+            <!-- contenido de texto -->
+        </model-viewer>
+
     <div class="text-start">
-        <!-- <h2 class="font-semibold">
-            Nevera X28
-        </h2> -->
         <p class="text-neutral-100 font-medium">Presione el botón ubicado a la derecha</p>
     </div>
+    )}
 </div>
-
 
 <style>
     #error {
-            background-color: #ffffff;
-            border-radius: 16px;
-            padding: 16px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate3d(-50%, -50%, 0);
-            transition: opacity 0.3s;
-        }
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 16px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        transition: opacity 0.3s;
+    }
 
-        #error.hide {
-            opacity: 0;
-            visibility: hidden;
-            transition: visibility 2s, opacity 1s 1s;
-        }
+    #error.hide {
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 2s, opacity 1s 1s;
+    }
 </style>
 
 <script is:inline type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
@@ -48,7 +51,7 @@ const { ar } = Astro.props;
 </script>
 
 <script is:inline>
-    document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
+    document.querySelector("#model-viewer")?.addEventListener('ar-status', (event) => {
         if (event.detail.status === 'failed') {
             const error = document.querySelector("#error");
             error.classList.remove('hide');
@@ -58,18 +61,16 @@ const { ar } = Astro.props;
         }
     });
 
-    // Autorotaci贸n del modelo
+    // Autorotación del modelo
     const modelViewer = document.querySelector("#model-viewer");
     let rotation = 0;
 
     function animateRotation() {
         rotation += 1;
-        modelViewer.cameraOrbit = `${rotation}deg 75deg 80%`;
+        if (modelViewer) {
+            modelViewer.cameraOrbit = `${rotation}deg 75deg 80%`;
+        }
         requestAnimationFrame(animateRotation);
     }
     //animateRotation();
-
-    //self.ModelViewerElement = self.ModelViewerElement || {};
-    //self.ModelViewerElement.meshoptDecoderLocation = 'https://cdn.jsdelivr.net/npm/meshoptimizer/meshopt_decoder.js';
-
 </script>

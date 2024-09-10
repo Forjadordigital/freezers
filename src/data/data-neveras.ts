@@ -252,5 +252,37 @@ export const coolers: Cooler[] = [
       ],
         'AR': ['nevera-pm-gtr'],
         'imagen':'fogel'
+    },
+    {
+      "id": 8,
+      "modelo": "EDGE-17-VV",
+      "temperatura": "0 °C - 4 °C",
+      "details": "Slim design single top-to-bottom visicooler with high capacity. With new Edge decoration concept. ",
+      "length": "75.6 cm",
+      "width": "54.9 cm",
+      "hight": "202.2 cm",
+      "capacity": [
+        "Cans: 468",
+        "Bottles: 205",
+        "Shelves: 5",
+        "Cubic Feet (ft3): 18",
+        "Liters: 516",
+        "Facing Units SS: ~ 32|25"
+      ],
+      "consumption": [
+        "Voltage: Universal",
+        "Refrigerant: R-290"
+      ],
+      "standarSpecs": [
+        "Black interior cabinet and shelves.",
+        "Electronic fan motors",
+        "Electronic control with energy saving button and Bluetooth",
+        "Variable speed compressor and faster temperature Pull Down times",
+        "Double pane glass door with Low-E and argon gas",
+        "LED illuminated logo on glass pane",
+        "New Edge decor concept with full glass door and LED illuminated contour"
+      ],
+        'AR': ['nevera-mango'],
+        'imagen':'fogel'
     }
   ]
